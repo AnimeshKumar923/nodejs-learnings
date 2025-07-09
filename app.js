@@ -1,10 +1,6 @@
 // const { createServer } = require("node:http");
-const fs = require("fs").promises;
 const express = require("express");
 const app = express();
-const authorRouter = require("./routes/authorRouter");
-const bookRouter = require("./routes/bookRouter");
-const indexRouter = require("./routes/indexRouter");
 const path = require("node:path");
 const assetsPath = path.join(__dirname, "public");
 app.use(express.static(assetsPath));
@@ -24,6 +20,10 @@ const users = ["Rose", "Cake", "Biff"];
 
 app.get("/", (req, res) => {
   res.render("index", { links: links, users: users });
+});
+
+app.get("/about", (req, res) => {
+  res.render("about");
 });
 
 app.listen(PORT, hostname, () => {
