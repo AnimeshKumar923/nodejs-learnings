@@ -6,7 +6,7 @@
   </head>
   <body>
     <% messages.forEach((msg) => { %> Message from <%= msg.user %>
-    <a href="/message/<%= msg.msgId %>" >open message</a>
+    <a href="/message/<%= msg.msgId %>" target="_blank">open message</a>
     <br />
     <br />
     <% }); %>
