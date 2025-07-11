@@ -2,15 +2,14 @@
 <html>
   <head>
     <title>Homepage</title>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles.scss" />
   </head>
   <body>
-    <% messages.forEach((msg) => { %>
-    <ol>
-      <li>Message: <%= msg.text %></li>
-      <li>User: <%= msg.user %></li>
-      <li>Joined: <%= msg.added %></li>
-    </ol>
+    <% messages.forEach((msg) => { %> Message from <%= msg.user %>
+    <a href="/message/<%= msg.msgId %>" >open message</a>
+    <br />
+    <br />
     <% }); %>
+    <a href="/new">Send a new message</a>
   </body>
 </html>
