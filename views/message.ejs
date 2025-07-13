@@ -4,12 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Message</title>
+    <link rel="stylesheet" href="/message.css" />
   </head>
   <body>
-    <ol>
-      <li>Message: <%= msg[msgId-1].text %></li>
-      <li>User: <%= msg[msgId-1].user %></li>
-      <li>Joined: <%= msg[msgId-1].added %></li>
-    </ol>
+    <div class="message-form-container">
+      <h2>Message Details</h2>
+      <ol style="list-style: none; padding: 0; margin: 0">
+        <li style="margin-bottom: 0.7rem">
+          <strong>Message:</strong> <%= msg[msgId-1].text %>
+        </li>
+        <li style="margin-bottom: 0.7rem">
+          <strong>User:</strong> <%= msg[msgId-1].user %>
+        </li>
+        <li><strong>Joined:</strong> <%= msg[msgId-1].added %></li>
+      </ol>
+    </div>
   </body>
 </html>

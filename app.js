@@ -7,7 +7,7 @@ app.use(express.static(assetsPath));
 app.use(express.urlencoded({ extended: true }));
 
 const hostname = "localhost";
-const PORT = 3000;
+const PORT = process.env.PORT || 4000;
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -25,7 +25,7 @@ app
       text: req.body.messageText,
       user: req.body.username,
       added: new Date(),
-      msgId: messages.length+1,
+      msgId: messages.length + 1,
     });
     res.redirect("/");
   });
