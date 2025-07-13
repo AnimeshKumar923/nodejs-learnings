@@ -6,7 +6,7 @@ const { messages } = require("./routes/index");
 app.use(express.static(assetsPath));
 app.use(express.urlencoded({ extended: true }));
 
-const hostname = "localhost";
+// const hostname = "localhost";
 const PORT = process.env.PORT || 4000;
 
 app.set("views", path.join(__dirname, "views"));
@@ -35,6 +35,6 @@ app.get("/message/:msgId", (req, res) => {
   res.render("message", { msg: messages, msgId: msgId });
 });
 
-app.listen(PORT, hostname, () => {
+app.listen(PORT, () => {
   console.log(`Server running at http://${hostname}:${PORT}/`);
 });
