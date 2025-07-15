@@ -80,7 +80,13 @@ exports.usersUpdatePost = [
       });
     }
     const { firstName, lastName, email, age, bio } = req.body;
-    usersStorage.updateUser(req.params.id, { firstName, lastName, email, age, bio });
+    usersStorage.updateUser(req.params.id, {
+      firstName,
+      lastName,
+      email,
+      age,
+      bio,
+    });
     res.redirect("/");
   },
 ];
@@ -89,4 +95,33 @@ exports.usersUpdatePost = [
 exports.usersDeletePost = (req, res) => {
   usersStorage.deleteUser(req.params.id);
   res.redirect("/");
+};
+
+exports.userSearchPage = (req, res) => {
+  res.render("searchUser");
+};
+
+exports.userSearchGet = (req, res) => {
+  const allUsers = usersStorage.getUsers();
+  const targetUserFirstName = req.query.firstName;
+  // let targetUser;
+  const targetUser = allUsers.find(
+    (user) => user.firstName === targetUserFirstName
+  );
+
+  // if (!user) {
+  //   return res.status(400).render("searchUser", {
+  //     title: "user not found",
+  //     user: user,
+  //     errors: errors.array(),
+  //   });
+  // }
+  res.render("searchResult", {
+    title: `search result for ${targetUserFirstName}`,
+    firstName: targetUser.firstName,
+    lastName: targetUser.lastName,
+    email: targetUser.email,
+    age: targetUser.age,
+    bio: targetUser.bio,
+  });
 };
