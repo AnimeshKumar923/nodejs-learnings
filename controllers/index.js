@@ -18,22 +18,31 @@ async function createUsernamePost(req, res) {
 }
 
 async function getIndex(req, res) {
-  const usernames = await db.getAllUsernames()
+  const usernames = await db.getAllUsernames();
   console.log("Usernames: ", usernames);
   res.render("index");
 }
 
 async function searchUsernameGet(req, res) {
-  const username  = req.query.username;
+  const username = req.query.username;
   const targetUser = await db.searchUsername(username);
-  res.render("searchResult", { title: `Search Result for '${username}'`, user: targetUser });
+  res.render("searchResult", {
+    title: `Search Result for '${username}'`,
+    user: targetUser,
+  });
   console.log(targetUser);
-  console.log(typeof(targetUser));
-  
+  console.log(typeof targetUser);
+}
+
+async function deleteAllUsers(req, res) {
+  await db.deleteAllUsers();
+  res.render("deleteUsers");
+  console.log("All users DELETED!");
 }
 module.exports = {
   getIndex,
   searchUsernameGet,
   createUsernameGet,
   createUsernamePost,
+  deleteAllUsers,
 };

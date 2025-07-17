@@ -6,6 +6,7 @@ const {
   createUsernameGet,
   createUsernamePost,
   searchUsernameGet,
+  deleteAllUsers,
 } = require("./controllers");
 const assetsPath = path.join(__dirname, "public");
 
@@ -22,7 +23,8 @@ app
   .get("/", getIndex)
   .get("/new", createUsernameGet)
   .post("/new", createUsernamePost)
-  .get("/search", searchUsernameGet);
+  .get("/search", searchUsernameGet)
+  .get("/delete", deleteAllUsers);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
