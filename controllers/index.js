@@ -23,14 +23,16 @@ async function getIndex(req, res) {
   res.render("index");
 }
 
-async function searchResultGet(req, res) {
-  const { username } = req.body;
+async function searchUsernameGet(req, res) {
+  const username  = req.query.username;
   const targetUser = await db.searchUsername(username);
-  res.render("searchResult", { title: "Search Result", user: targetUser });
+  res.render("searchResult", { title: `Search Result for ${username}`, user: targetUser });
+  console.log(targetUser);
+  
 }
 module.exports = {
   getIndex,
-  searchResultGet,
+  searchUsernameGet,
   createUsernameGet,
   createUsernamePost,
 };

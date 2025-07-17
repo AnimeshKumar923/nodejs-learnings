@@ -2,10 +2,10 @@ const express = require("express");
 const app = express();
 const path = require("node:path");
 const {
-  createUsernameGet,
   getIndex,
+  createUsernameGet,
   createUsernamePost,
-  searchResultGet,
+  searchUsernameGet,
 } = require("./controllers");
 const assetsPath = path.join(__dirname, "public");
 
@@ -22,7 +22,7 @@ app
   .get("/", getIndex)
   .get("/new", createUsernameGet)
   .post("/new", createUsernamePost)
-  .get("/search", searchResultGet);
+  .get("/search", searchUsernameGet);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
