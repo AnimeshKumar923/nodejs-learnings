@@ -1,0 +1,36 @@
+const db = require("../db/queries");
+
+// async function getUsernames(req, res) {
+//   res.send("Usernames: " + usernames.map((user) => user.username).join(", "));
+// }
+
+async function createUsernameGet(req, res) {
+  // render the form
+  console.log("usernames will be logged here - wip");
+  res.render("addUser");
+}
+
+async function createUsernamePost(req, res) {
+  const { username } = req.body;
+  await db.insertUsername(username);
+  res.redirect("/");
+  console.log("username to be saved: ", req.body.username);
+}
+
+async function getIndex(req, res) {
+  const usernames = await db.getAllUsernames()
+  console.log("Usernames: ", usernames);
+  res.render("index");
+}
+
+async function searchResultGet(req, res) {
+  const { username } = req.body;
+  const targetUser = await db.searchUsername(username);
+  res.render("searchResult", { title: "Search Result", user: targetUser });
+}
+module.exports = {
+  getIndex,
+  searchResultGet,
+  createUsernameGet,
+  createUsernamePost,
+};

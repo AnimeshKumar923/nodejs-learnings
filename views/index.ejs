@@ -2,15 +2,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PostgreSQL</title>
+    <title>Index Page</title>
   </head>
   <body>
-    <h1>PostgreSQL Demo App</h1>
-    <form action="/new" method="POST">
-      <label for="username">Username: </label>
+    <h1>User List</h1>
+    <form action="/search" method="GET">
+      <label for="username">Search user: </label>
       <input type="text" name="username" id="username" required />
+      <button type="submit">Submit</button>
     </form>
-    <!-- <a href="/create">Create a user</a> -->
-    <!-- <a href="/search">Search user</a> -->
+    <a href="/new">Add a user</a>
   </body>
 </html>
