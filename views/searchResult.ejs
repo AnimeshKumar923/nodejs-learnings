@@ -6,13 +6,15 @@
     <title></title>
   </head>
   <body>
-    <h3><%= title %></h3>
+    <h1><%= title %></h1>
     <ul>
       <% for( let i = 0; i < user.length; i++ ) { %>
       <li>Name: <%= user[i].username %></li>
       <% } %>
     </ul>
-
+    <% if (Object.keys(locals.user).length === 0) { %>
+    <h3>User doesn't exists</h3>
+    <% } %>
     <a href="/">Search another</a>
   </body>
 </html>

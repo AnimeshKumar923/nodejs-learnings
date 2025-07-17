@@ -26,8 +26,9 @@ async function getIndex(req, res) {
 async function searchUsernameGet(req, res) {
   const username  = req.query.username;
   const targetUser = await db.searchUsername(username);
-  res.render("searchResult", { title: `Search Result for ${username}`, user: targetUser });
+  res.render("searchResult", { title: `Search Result for '${username}'`, user: targetUser });
   console.log(targetUser);
+  console.log(typeof(targetUser));
   
 }
 module.exports = {
