@@ -1,15 +1,25 @@
 const db = require("../db/queries");
 
-async function createUsernameGet(req, res) {
-  console.log("usernames will be logged here - wip");
-  res.render("addUser");
+async function indexPageGet(req, res) {
+  res.render("index", { messages: messages, msgId: messages.msgId });
 }
 
-async function createUsernamePost(req, res) {
-  const { username } = req.body;
-  await db.insertUsername(username);
+async function newMessageFormGet(req, res) {
+  res.render("form");
+}
+async function newMessageFormPost(req, res) {
+  const text = req.body.messageText;
+  const username = req.body.username;
+  const date = "CURRENT_TIMESTAMP";
+
+  await db.insertNewMessage(username, text, date);
   res.redirect("/");
-  console.log("username to be saved: ", req.body.username);
+}
+
+async function getUserById(req, res) {
+  const { msgId } = req.params;
+  const messageDetails = 0;
+  res.render("message", { msg: messages, msgId: msgId });
 }
 
 async function getIndex(req, res) {
@@ -30,9 +40,8 @@ async function searchUsernameGet(req, res) {
 }
 
 module.exports = {
-  getIndex,
-  searchUsernameGet,
-  createUsernameGet,
-  createUsernamePost,
-  deleteAllUsers,
+  indexPageGet,
+  newMessageFormGet,
+  newMessageFormPost,
+  getUserById,
 };
