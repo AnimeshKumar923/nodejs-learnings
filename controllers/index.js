@@ -1,7 +1,8 @@
 const db = require("../db/queries");
 
 async function indexPageGet(req, res) {
-  res.render("index", { messages: messages, msgId: messages.msgId });
+  const messages = await db.getAllMessages();
+  res.render("index", { messages: messages});
 }
 
 async function newMessageFormGet(req, res) {
@@ -10,23 +11,17 @@ async function newMessageFormGet(req, res) {
 async function newMessageFormPost(req, res) {
   const text = req.body.messageText;
   const username = req.body.username;
-  const date = "CURRENT_TIMESTAMP";
 
-  await db.insertNewMessage(username, text, date);
+  await db.insertNewMessage(username, text);
   res.redirect("/");
 }
 
 async function getUserById(req, res) {
   const { msgId } = req.params;
-  const messageDetails = 0;
-  res.render("message", { msg: messages, msgId: msgId });
+  const messageDetails = await db.getUsernameById(msgId);
+  res.render("message", { msg: messageDetails });
 }
 
-async function getIndex(req, res) {
-  const usernames = await db.getAllUsernames();
-  console.log("Usernames: ", usernames);
-  res.render("index");
-}
 
 async function searchUsernameGet(req, res) {
   const username = req.query.username;

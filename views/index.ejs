@@ -5,11 +5,12 @@
     <link rel="stylesheet" href="/styles.scss" />
   </head>
   <body>
-    <% messages.forEach((msg) => { %> Message from <%= msg.user %>
-    <a href="/message/<%= msg.msgId %>" target="_blank">open message</a>
+    <% for( let i = 0; i < messages.length; i++ ) { %> Message from <%= messages[i].username
+    %>
+    <a href="/message/<%= messages[i].id %>" target="_blank">open message</a>
     <br />
     <br />
-    <% }); %>
+    <% } %> 
     <a href="/new">Send a new message</a>
   </body>
 </html>
