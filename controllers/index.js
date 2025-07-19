@@ -19,7 +19,8 @@ async function newMessageFormPost(req, res) {
 async function getUserById(req, res) {
   const { msgId } = req.params;
   const messageDetails = await db.getUsernameById(msgId);
-  res.render("message", { msg: messageDetails });
+  
+  res.render("message", { msg: messageDetails[0] });
 }
 
 

@@ -8,6 +8,7 @@ const {
   newMessageFormPost,
   indexPageGet,
 } = require("./controllers");
+const CustomNotFoundError = require("./errors/CustomNotFoundError");
 
 app.use(express.static(assetsPath));
 app.use(express.urlencoded({ extended: true }));
@@ -20,6 +21,9 @@ app.set("view engine", "ejs");
 app.get("/", indexPageGet);
 app.get("/new", newMessageFormGet);
 app.post("/new", newMessageFormPost);
+app.get("/message", () => {
+  throw new CustomNotFoundError("Page doesn't exist");
+});
 app.get("/message/:msgId", getUserById);
 
 app.listen(PORT, () => {
