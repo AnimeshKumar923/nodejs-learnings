@@ -11,12 +11,12 @@
       <h2>Message Details</h2>
       <ol style="list-style: none; padding: 0; margin: 0">
         <li style="margin-bottom: 0.7rem">
-          <strong>Message:</strong> <%= msg[msgId-1].text %>
+          <strong>User:</strong> <%= msg.username %>
         </li>
         <li style="margin-bottom: 0.7rem">
-          <strong>User:</strong> <%= msg[msgId-1].user %>
+          <strong>Message:</strong> <%= msg.text %>
         </li>
-        <li><strong>Joined:</strong> <%= msg[msgId-1].added %></li>
+        <li><strong>Joined:</strong> <%= msg.date %></li>
       </ol>
     </div>
   </body>
