@@ -1,3 +1,4 @@
-const { argv } = require('node:process');
+// const { argv } = require('node:process');
 
-console.log(argv[2]);
+console.log(process.argv[2]);
+console.log(typeof(process.argv[2]));
