@@ -136,4 +136,4 @@ dist
 .pnp.*
 
 db/testConnection.js
-db/ca.pem
+*ca.pem
