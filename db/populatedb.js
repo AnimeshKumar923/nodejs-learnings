@@ -36,7 +36,7 @@ async function main() {
     // database: process.env.AIVEN_DB,
     ssl: {
       rejectUnauthorized: true,
-      ca: fs.readFileSync("./db/ca.pem").toString(),
+      ca: fs.readFileSync("./ca.pem").toString(),
     },
   });
   await client.connect();

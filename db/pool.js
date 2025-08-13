@@ -4,14 +4,14 @@ const fs = require("fs");
 
 // PROD DATABASE
 
-module.exports = new Pool({
-  connectionString: `postgresql://${process.env.AIVEN_DB_USERNAME}:${process.env.AIVEN_DB_PASSWORD}@${process.env.AIVEN_DB_HOSTNAME}:${process.env.AIVEN_DB_PORT}/${process.env.AIVEN_DB}`,
-  ssl: {
-    rejectUnauthorized: true,
-    ca: fs.readFileSync("./ca.pem").toString(),
-    // ca: fs.readFileSync("./db/ca.pem").toString(),
-  },
-});
+// module.exports = new Pool({
+//   connectionString: `postgresql://${process.env.AIVEN_DB_USERNAME}:${process.env.AIVEN_DB_PASSWORD}@${process.env.AIVEN_DB_HOSTNAME}:${process.env.AIVEN_DB_PORT}/${process.env.AIVEN_DB}`,
+//   ssl: {
+//     rejectUnauthorized: true,
+//     ca: fs.readFileSync("./ca.pem").toString(),
+//     // ca: fs.readFileSync("./db/ca.pem").toString(),
+//   },
+// });
 
 // DEV DATABASE
 
