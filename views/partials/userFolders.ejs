@@ -1,0 +1,9 @@
+<ol>
+  <% userFolders.forEach(item => { %>
+  <li><a href="/folder/<%= item.folderId %>"><%= item.folderName %></a></li>
+  <a href="/folder/<%= item.folderId %>/update">Update folder info</a
+  ><br />
+  <a href="/folder/<%= item.folderId %>/delete">Delete folder</a>
+  <br /><br />
+  <% }) %>
+</ol>

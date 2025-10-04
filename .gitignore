@@ -135,5 +135,7 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-db/testConnection.js
 *ca.pem
+
+# /generated/prisma
+# prisma/generated/

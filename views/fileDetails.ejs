@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Details</title>
+  </head>
+  <body>
+    <ul>
+      <li>File Name: <%= fileDetails.fileName %></li>
+      <li>File Size: <%= fileDetails.fileSize %> MB</li>
+      <li>Upload Time: <%= fileDetails.fileTime %></li>
+      <li>
+        <a href="<%= fileDetails.fileURL %>" download>Download File</a>
+      </li>
+    </ul>
+  </body>
+</html>
