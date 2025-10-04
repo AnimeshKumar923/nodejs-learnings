@@ -20,28 +20,58 @@ app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: false }));
 
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    store: new PrismaSessionStore(new PrismaClient(), {
-      checkPeriod: 2 * 60 * 1000, //ms
-      dbRecordIdIsSessionId: true,
-      dbRecordIdFunction: undefined,
-    }),
-    cookie: { maxAge: 15 * 24 * 60 * 60 * 1000 }, // 15 days
-  })
-);
+let users = {
+  1: {
+    id: "1",
+    username: "Robin Wieruch",
+  },
+  2: {
+    id: "2",
+    username: "Dave Davids",
+  },
+};
 
-app.use(passport.session());
+let messages = {
+  1: {
+    id: "1",
+    text: "Hello World",
+    userId: "1",
+  },
+  2: {
+    id: "2",
+    text: "By World",
+    userId: "2",
+  },
+};
 
-passport.use(localStrategyConfig);
+// app.use("/", appRoute);
 
-passport.serializeUser(serializerFunction);
+app.post("/users", (req, res) => {
+  return res.send("POST HTTP method on user resource");
+});
 
-passport.deserializeUser(deserializerFunction);
+app.put("/users/:userId", (req, res) => {
+  return res.send(`PUT HTTP method on user/${req.params.userId} resource`);
+});
 
-app.use("/", appRoute);
+app.delete("/users/:userId", (req, res) => {
+  return res.send(`DELETE HTTP method on user/${req.params.userId} resource`);
+});
+
+app.get("/users", (req, res) => {
+  return res.send(Object.values(users));
+});
+
+app.get("/users/:userId", (req, res) => {
+  return res.send(users[req.params.userId]);
+});
+
+app.get('/messages', (req, res) => {
+  return res.send(Object.values(messages));
+});
+
+app.get('/messages/:messageId', (req, res) => {
+  return res.send(messages[req.params.messageId]);
+});
 
 app.listen(3000, () => console.log("app listening on port 3000!"));

@@ -13,7 +13,7 @@ const cloudinary = require("cloudinary").v2;
 // });
 
 // Log the configuration
-console.log(cloudinary.config());
+// console.log(cloudinary.config());
 // Sign up validation
 const alphaErr = "must only contain letters.";
 const emailErr = "must be a valid email";
